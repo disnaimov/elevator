@@ -14,7 +14,7 @@ public class Elevator {
     private int currentLoad;
     private Direction direction;
     private DoorState doorState;
-
+    private boolean isPassengerDelivered;
     private static final int FLOOR_MOVEMENT_DELAY = 1000;
     private static final int DOOR_OPERATION_DELAY = 2000;
 
@@ -92,6 +92,7 @@ public class Elevator {
         doorState = DoorState.OPEN;
         if (currentFloor == floor) {
             System.out.println("Elevator " + id + " has arrived at floor " + floor);
+            isPassengerDelivered = true;
         }
         System.out.println("Door is now open");
         currentLoad -= passengerWeight;
@@ -146,6 +147,10 @@ public class Elevator {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isPassengerDelivered(){
+        return isPassengerDelivered;
     }
 
     public boolean isDoorOpen() {
